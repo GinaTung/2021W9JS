@@ -6,27 +6,40 @@ const orderList =document.querySelector(".js-orderList");
 
 function init(){
     getOrderList();
-    // renderC3();
+    renderC3();
 }   
 init();
 function renderC3(){
+  console.log(orderData)
+  //物件資料蒐集
+  let total ={};
+  orderData.forEach(function(item){
+    item.products.forEach(function(productItem){
+      if(total[productItem.category] == undefined){
+        total[productItem.category] = productItem.price * productItem.quantity;
+      }else{
+        total[productItem.category] += productItem.price * productItem.quantity;
+      }
+    })
+  })
+  console.log(total);
+  //做出資料關聯
+  let categoryAry= Object.keys(total);
+  console.log(categoryAry)
+  let newData =[];
+  categoryAry.forEach(function(item){
+    let ary =[];
+    ary.push(item);
+    ary.push(total[item]);
+    newData.push(ary);
+  })
+  console.log(newData)
   // C3.js
 let chart = c3.generate({
   bindto: '#chart', // HTML 元素綁定
   data: {
       type: "pie",
-      columns: [
-      ['Louvre 雙人床架', 1],
-      ['Antony 雙人床架', 2],
-      ['Anty 雙人床架', 3],
-      ['其他', 4],
-      ],
-      colors:{
-          "Louvre 雙人床架":"#DACBFF",
-          "Antony 雙人床架":"#9D7FEA",
-          "Anty 雙人床架": "#5434A7",
-          "其他": "#301E5F",
-      }
+      columns: newData,
   },
 });
 }
