@@ -769,8 +769,10 @@ body {
   padding: 10px;
   text-align: left;
   border: 1px solid #000000;
-  width:20%;
+  
+  word-break: break-all;
 }
+
 
 @media (max-width: 1110px) {
   .orderPage-table {
