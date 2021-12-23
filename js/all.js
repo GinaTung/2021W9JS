@@ -40,8 +40,8 @@ function combineProductListHTMLItem(item){
     <img src=${item.images} alt="">
     <a href="#" class="addCardBtn" id="js-addCart" data-id="${item.id}">加入購物車</a>
     <h3>${item.title}</h3>
-    <del class="originPrice">NT$${item.origin_price}</del>
-    <p class="nowPrice">NT$${item.price}</p>
+    <del class="originPrice">NT$${toThousands(item.origin_price)}</del>
+    <p class="nowPrice">NT$${toThousands(item.price)}</p>
     </li>`;
 }
 
@@ -110,7 +110,7 @@ function getCartList(){
     .then(function(response){
         // console.log(response.data);
 
-        document.querySelector(".js-total").textContent =response.data.finalTotal;
+        document.querySelector(".js-total").textContent =toThousands(response.data.finalTotal);
         cartData = response.data.carts;
         let str ="";
         cartData.forEach(function(item){
@@ -121,9 +121,9 @@ function getCartList(){
                     <p>${item.product.title}</p>
                 </div>
             </td>
-            <td>NT$${item.product.price}</td>
+            <td>NT$${toThousands(item.product.price)}</td>
             <td>${item.quantity}</td>
-            <td>NT$${item.product.price*item.quantity}</td>
+            <td>NT$${toThousands(item.product.price*item.quantity)}</td>
             <td class="discardBtn">
                 <a href="#" class="material-icons" data-id="${item.id}">
                     clear
@@ -208,3 +208,10 @@ orderInfoBtn.addEventListener('click',function(e){
         document.querySelector("#tradeWay").value ="ATM";
     })
 })
+
+//util js
+function toThousands(x){
+    let parts =x.toString().split(".");
+    parts[0] =parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
+    return parts.join(".");
+}

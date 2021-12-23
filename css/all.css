@@ -564,7 +564,7 @@ body {
 }
 
 .productCard a, .productCard h3 {
-  font-size: 1.25rem;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 900px) {
@@ -589,11 +589,11 @@ body {
 }
 
 .originPrice {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .nowPrice {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 .shoppingCart {
