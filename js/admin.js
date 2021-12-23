@@ -43,6 +43,7 @@ let chart = c3.generate({
   },
 });
 }
+
 function getOrderList(){
     axios.get(`https://livejs-api.hexschool.io/api/livejs/v1/admin/${api_path}/orders`,{
         headers:{

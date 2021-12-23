@@ -209,7 +209,7 @@ orderInfoBtn.addEventListener('click',function(e){
     })
 })
 
-//util js
+//util js、元件→會獨立建立工具的js檔供其他檔案使用
 function toThousands(x){
     let parts =x.toString().split(".");
     parts[0] =parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
