@@ -6,10 +6,9 @@ const orderList =document.querySelector(".js-orderList");
 
 function init(){
     getOrderList();
-    renderC3();
-    renderC3_LV2()
 }   
 init();
+
 function renderC3(){
   console.log(orderData)
   //物件資料蒐集
@@ -35,14 +34,14 @@ function renderC3(){
     newData.push(ary);
   })
   console.log(newData)
-//   // C3.js
-// let chart = c3.generate({
-//   bindto: '#chart', // HTML 元素綁定
-//   data: {
-//       type: "pie",
-//       columns: newData,
-//   },
-// });
+  // C3.js
+let chart = c3.generate({
+  bindto: '#chart', // HTML 元素綁定
+  data: {
+      type: "pie",
+      columns: newData,
+  },
+});
 }
 
 function renderC3_LV2(){
@@ -116,7 +115,7 @@ function getOrderList(){
     </tr>`
     })
     orderList.innerHTML =str;
-    renderC3();
+    renderC3()
     })
 }
 

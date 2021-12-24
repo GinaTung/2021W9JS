@@ -6,8 +6,6 @@ const orderList =document.querySelector(".js-orderList");
 
 function init(){
     getOrderList();
-    renderC3();
-    renderC3_LV2()
 }   
 init();
 function renderC3(){
